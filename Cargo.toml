@@ -4,3 +4,4 @@ version = "0.1.0"
 authors = ["rqrqrqrq <rqtdfh@gmail.com>"]
 
 [dependencies]
+dotenv="0.11"
