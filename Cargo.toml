@@ -1,0 +1,6 @@
+[package]
+name = "rust-gql"
+version = "0.1.0"
+authors = ["rqrqrqrq <rqtdfh@gmail.com>"]
+
+[dependencies]
