@@ -14,36 +14,11 @@ use rocket::State;
 use juniper::{RootNode, EmptyMutation};
 use juniper_rocket::{GraphQLResponse, GraphQLRequest, graphiql_source};
 
-struct Context {
-    url: String,
-}
+mod gql_context;
+use gql_context::Context;
 
-impl juniper::Context for Context {}
-
-#[derive(GraphQLObject)]
-struct User {
-    id: i32,
-    name: String,
-}
-
-struct Query;
-
-graphql_object!(Query: Context |&self| {
-    field echo(x: String) -> String {
-        x
-    }
-
-    field url(&executor) -> String {
-        executor.context().url.clone()
-    }
-
-    field User() -> User {
-        User {
-            id: 1,
-            name: "yoba".to_owned(),
-        }
-    }
-});
+mod root_query;
+use root_query::Query;
 
 type Schema = RootNode<'static, Query, EmptyMutation<Context>>;
 
